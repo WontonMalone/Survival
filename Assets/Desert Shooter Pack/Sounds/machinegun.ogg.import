@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b58i5hdh1rl25"
+path="res://.godot/imported/machinegun.ogg-398621798542b8eb90eb6753b47d1510.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Desert Shooter Pack/Sounds/machinegun.ogg"
+dest_files=["res://.godot/imported/machinegun.ogg-398621798542b8eb90eb6753b47d1510.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

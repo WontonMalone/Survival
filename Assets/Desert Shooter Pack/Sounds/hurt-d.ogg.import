@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cwtgmq1dmtqox"
+path="res://.godot/imported/hurt-d.ogg-4a8b3a5958e70c58838797c9525bc7eb.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Desert Shooter Pack/Sounds/hurt-d.ogg"
+dest_files=["res://.godot/imported/hurt-d.ogg-4a8b3a5958e70c58838797c9525bc7eb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

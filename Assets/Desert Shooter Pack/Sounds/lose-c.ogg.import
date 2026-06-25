@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bhylcph4w0ejy"
+path="res://.godot/imported/lose-c.ogg-56b7dbaa368181662e2eea7d7e781e6d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Desert Shooter Pack/Sounds/lose-c.ogg"
+dest_files=["res://.godot/imported/lose-c.ogg-56b7dbaa368181662e2eea7d7e781e6d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

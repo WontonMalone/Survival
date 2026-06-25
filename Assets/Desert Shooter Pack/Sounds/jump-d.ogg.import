@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://depo26pputkei"
+path="res://.godot/imported/jump-d.ogg-aebae3edc6813eb1b7575e0e26aa30ab.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Desert Shooter Pack/Sounds/jump-d.ogg"
+dest_files=["res://.godot/imported/jump-d.ogg-aebae3edc6813eb1b7575e0e26aa30ab.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
