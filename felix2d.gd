@@ -2,17 +2,49 @@ extends Node2D
 
 @onready var game_over_screen = $"../UI/GameOverScreen"
 
+
+@onready var hp_label = $"../UI/HPLabel"
+@onready var gold_label = $"../UI/GoldLabel"
+@onready var ammo_label = $"../UI/AmmoLabel"
 @export var hp = 20
+@export var gold = 0
+@export var ammo = 8
+@export var max_ammo = 8
+@export var damage = 2.0
+@export var fire_rate = 1.0
+@export var fire_timer = 0.0
+
+var is_holding = false
+var is_auto = false
+var can_shoot = true
+var is_reloading = false
+var reload_time = 4.0
 
 
+func _ready():
+	update_ui()
 
+func _process(delta):
+	fire_timer -= delta
+	if is_holding and is_auto and fire_timer <= 0:
+		shoot()
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			shoot()
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				is_holding = true
+				if fire_timer <= 0:
+					shoot()
+				else:
+					is_holding = false
 
 func shoot():
+	if is_reloading or ammo <= 0:
+		return
+	fire_timer = fire_rate
+	ammo -= 1
+	update_ui()
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsPointQueryParameters2D.new()
 	query.position = get_global_mouse_position()
@@ -20,13 +52,23 @@ func shoot():
 	query.collision_mask = 1
 	var results = space_state.intersect_point(query)
 	print("results: ", results)
-	
 	for result in results:
 		if result.collider.is_in_group("enemies"):
-			result.collider.take_damage(5)
+			result.collider.take_damage(damage)
+	if ammo <= 0:
+		reload()
+
+func reload():
+	is_reloading = true
+	ammo_label.text = "Reloading..."
+	await get_tree().create_timer(reload_time).timeout
+	ammo = max_ammo
+	is_reloading = false
+	update_ui()
 
 func take_damage(amount):
 	hp -= amount
+	update_ui()
 	print("Felix hp: ", hp)
 	if hp <= 0:
 		get_tree().paused = true
@@ -37,3 +79,32 @@ func take_damage(amount):
 func _on_button_pressed():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+	
+func update_ui():
+	gold_label.text = "Gold: " + str(gold)
+	hp_label.text = "HP: " + str(roundi(hp))
+	ammo_label.text = "Ammo: " + str(ammo)
+
+func set_weapon(weapon_name: String):
+	if weapon_name == "Pistol":
+		damage = 2.5
+		fire_rate = .8
+		is_auto = false
+		ammo = 8
+		max_ammo = 8
+		reload_time = 1.5
+	elif weapon_name == "SMG":
+		damage = 1.25
+		is_auto = true
+		fire_rate = .2
+		ammo = 24
+		max_ammo = 24
+		reload_time = 1.88
+	elif weapon_name == "Sniper":
+		damage = 5.0
+		fire_rate = 1.25
+		is_auto = false
+		ammo = 4
+		max_ammo = 4
+		reload_time = 2.0
+	update_ui()

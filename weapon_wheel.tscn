@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dxp644wtd3ayb"]
+
+[ext_resource type="Script" uid="uid://bu27ionhixmso" path="res://weaponwheel.gd" id="1_0uvyy"]
+[ext_resource type="Texture2D" uid="uid://dticm1ollk61r" path="res://Assets/Physics Assets/PNG/Metal elements/elementMetal001.png" id="2_c2qow"]
+
+[node name="WeaponWheel" type="Node2D" unique_id=1937996854]
+process_mode = 3
+script = ExtResource("1_0uvyy")
+
+[node name="Wheel" type="Sprite2D" parent="." unique_id=1710164773]
+position = Vector2(319, 144.5)
+scale = Vector2(3, 3)
+texture = ExtResource("2_c2qow")
