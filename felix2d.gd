@@ -6,7 +6,7 @@ extends Node2D
 @onready var hp_label = $"../UI/HPLabel"
 @onready var gold_label = $"../UI/GoldLabel"
 @onready var ammo_label = $"../UI/AmmoLabel"
-@export var hp = 20
+@export var hp = 10
 @export var gold = 0
 @export var ammo = 8
 @export var max_ammo = 8
@@ -20,8 +20,8 @@ var can_shoot = true
 var is_reloading = false
 var reload_time = 4.0
 
-
 func _ready():
+	hp = 10 + (GameData.hp_upgrade * 5)
 	update_ui()
 
 func _process(delta):
@@ -75,36 +75,34 @@ func take_damage(amount):
 		game_over_screen.visible = true
 		print("Game Over")
 
-
-func _on_button_pressed():
-	get_tree().paused = false
-	get_tree().reload_current_scene()
 	
 func update_ui():
-	gold_label.text = "Gold: " + str(gold)
+	gold_label.text = "Gold: " + str(GameData.gold)
 	hp_label.text = "HP: " + str(roundi(hp))
 	ammo_label.text = "Ammo: " + str(ammo)
 
 func set_weapon(weapon_name: String):
 	if weapon_name == "Pistol":
-		damage = 2.5
-		fire_rate = .8
+		damage = 2.5 + (GameData.damage_upgrade * .25)
+		fire_rate = .8 - (GameData.fire_rate_upgrade * 0.1)
 		is_auto = false
-		ammo = 8
-		max_ammo = 8
-		reload_time = 1.5
+		ammo = 8 + GameData.ammo_upgrade
+		max_ammo = ammo
+		reload_time = 1.5 - (GameData.fire_rate_upgrade * 0.2)
 	elif weapon_name == "SMG":
-		damage = 1.25
+		damage = 1.25 + (GameData.damage_upgrade * 0.2)
 		is_auto = true
-		fire_rate = .2
-		ammo = 24
-		max_ammo = 24
-		reload_time = 1.88
+		fire_rate = .2 - (GameData.fire_rate_upgrade * 0.02)
+		ammo = 24 + (GameData.ammo_upgrade)
+		max_ammo = ammo
+		reload_time = 1.88 - (GameData.fire_rate_upgrade * 0.1)
 	elif weapon_name == "Sniper":
-		damage = 5.0
-		fire_rate = 1.25
+		damage = 5.0 + (GameData.damage_upgrade * 0.5)
+		fire_rate = 1.25 - (GameData.fire_rate_upgrade * 0.1)
 		is_auto = false
-		ammo = 4
-		max_ammo = 4
-		reload_time = 2.0
+		ammo = 4 + GameData.ammo_upgrade
+		max_ammo = ammo
+		reload_time = 2.0 - (GameData.fire_rate_upgrade * 0.2)
+	fire_rate = max(fire_rate, 0.05)
+	reload_time = max(reload_time, 0.5)
 	update_ui()

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dihlv6m77lk71"]
+
+[ext_resource type="Script" uid="uid://d1f2qhtvvab6s" path="res://enemies.gd" id="1_14tpb"]
+[ext_resource type="Texture2D" uid="uid://cdubta4d3s1k7" path="res://Assets/Desert Shooter Pack/PNG/Enemies/Tiles/tile_0000.png" id="2_14tpb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3yda"]
+size = Vector2(22.405987, 14.937325)
+
+[node name="Worm" type="Area2D" unique_id=257687750 groups=["enemies"]]
+script = ExtResource("1_14tpb")
+hp = 5
+
+[node name="WormColl" type="CollisionShape2D" parent="." unique_id=1044237827]
+position = Vector2(0.5, 5)
+scale = Vector2(0.93724954, 0.93724954)
+shape = SubResource("RectangleShape2D_j3yda")
+
+[node name="Worm2D" type="Sprite2D" parent="." unique_id=1505076930]
+texture = ExtResource("2_14tpb")

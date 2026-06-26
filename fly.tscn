@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cdbwlyo13pi4n"]
+
+[ext_resource type="Texture2D" uid="uid://dmolrr1mq8sg3" path="res://Assets/Desert Shooter Pack/PNG/Enemies/Tiles/tile_0004.png" id="1_mv3iy"]
+[ext_resource type="Script" uid="uid://d1f2qhtvvab6s" path="res://enemies.gd" id="1_qarim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qarim"]
+
+[node name="Fly" type="Area2D" unique_id=1019737569 groups=["enemies"]]
+script = ExtResource("1_qarim")
+speed = 70
+hp = 12
+gold_drop = 2
+
+[node name="Fly2D" type="Sprite2D" parent="." unique_id=1354458326]
+texture = ExtResource("1_mv3iy")
+
+[node name="Flycol" type="CollisionShape2D" parent="." unique_id=611755281]
+shape = SubResource("RectangleShape2D_qarim")

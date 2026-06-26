@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bo6mthxyx0o30"]
+
+[ext_resource type="Texture2D" uid="uid://dvu1nkc1fa37w" path="res://Assets/Desert Shooter Pack/PNG/Enemies/Tiles/tile_0012.png" id="1_0gs2m"]
+[ext_resource type="Script" uid="uid://d1f2qhtvvab6s" path="res://enemies.gd" id="1_c1y7l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1y7l"]
+size = Vector2(20, 22)
+
+[node name="Gremlin" type="Area2D" unique_id=1205970874]
+scale = Vector2(2, 2)
+script = ExtResource("1_c1y7l")
+speed = 67
+hp = 50
+gold_drop = 8
+
+[node name="Gremlin2D" type="Sprite2D" parent="." unique_id=594154035]
+texture = ExtResource("1_0gs2m")
+
+[node name="GremlinCol" type="CollisionShape2D" parent="." unique_id=1467274297]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_c1y7l")
