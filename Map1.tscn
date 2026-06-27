@@ -22,6 +22,8 @@
 [ext_resource type="AudioStream" uid="uid://ut7o44qvdrp0" path="res://Audio/UI/accept.ogg" id="16_oryae"]
 [ext_resource type="AudioStream" uid="uid://ca0k0bsxkmua8" path="res://Audio/UI/cancel.ogg" id="18_m8eru"]
 [ext_resource type="AudioStream" uid="uid://dn6aixhphv72n" path="res://Audio/Musicc/Retro Beat.ogg" id="18_r2i1d"]
+[ext_resource type="Script" uid="uid://pbbx5oci1h8c" path="res://crosshair.gd" id="23_bxpyd"]
+[ext_resource type="Texture2D" uid="uid://dxi8klafwap0d" path="res://Assets/Desert Shooter Pack/PNG/Crosshair/Pistol.png" id="24_284xs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j556s"]
 texture = ExtResource("1_3wee7")
@@ -490,6 +492,13 @@ stream = ExtResource("16_oryae")
 
 [node name="WeaponWheel" parent="UI" unique_id=1937996854 instance=ExtResource("14_5kecc")]
 visible = false
+
+[node name="crosshair" type="CanvasLayer" parent="." unique_id=647400415]
+unique_name_in_owner = true
+script = ExtResource("23_bxpyd")
+
+[node name="crosshair2d" type="Sprite2D" parent="crosshair" unique_id=1357347769]
+texture = ExtResource("24_284xs")
 
 [connection signal="pressed" from="UI/GameOverScreen/PanelGO/Button" to="UI/GameOverScreen" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/GameOverScreen/PanelGO/HPUpgrade" to="UI/GameOverScreen" method="_on_hp_upgrade_pressed"]

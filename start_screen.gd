@@ -9,6 +9,7 @@ func _on_start_button_pressed():
 	print("Game Started")
 	$ButtonSound.play()
 	visible = false
+	get_node("../../crosshair").show_crosshair()
 	var weapon_wheel = get_node("../../UI/WeaponWheel")
 	weapon_wheel.visible = true
 	weapon_wheel.start_spin()

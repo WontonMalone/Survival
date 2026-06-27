@@ -36,6 +36,7 @@ func start_spin():
 	get_tree().paused = false
 	spawner.can_spawn = true
 	get_node("../../Felix2D").set_weapon(selected_weapon)
+	get_node("../../crosshair").set_crosshair(selected_weapon)
 	
 #func get_result():
 	#var angle = fmod(rad_to_deg(wheel.rotation), 360)

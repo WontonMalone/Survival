@@ -88,6 +88,7 @@ func take_damage(amount):
 		$LoseAudio.play()
 		get_tree().paused = true
 		game_over_screen.visible = true
+		get_node("../crosshair").hide_crosshair()
 		print("Game Over")
 
 	
