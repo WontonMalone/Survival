@@ -6,6 +6,13 @@ extends Node2D
 @onready var hp_label = $"../UI/HPLabel"
 @onready var gold_label = $"../UI/GoldLabel"
 @onready var ammo_label = $"../UI/AmmoLabel"
+@onready var gun_sound = $GunSound
+@onready var machinegun = $machinegun
+@onready var pistol = $pistol
+@onready var sniper = $sniper
+
+
+
 @export var hp = 10
 @export var gold = 0
 @export var ammo = 8
@@ -19,6 +26,10 @@ var is_auto = false
 var can_shoot = true
 var is_reloading = false
 var reload_time = 4.0
+var active_sound = null
+var pistol_sound = preload("res://Audio/Sound Effects/pistol.ogg")
+var machinegun_sound = preload("res://Audio/Sound Effects/machinegun.ogg")
+var sniper_sound = preload("res://Audio/Sound Effects/sniper.ogg")
 
 func _ready():
 	hp = 10 + (GameData.hp_upgrade * 5)
@@ -42,6 +53,9 @@ func _input(event):
 func shoot():
 	if is_reloading or ammo <= 0:
 		return
+	print("active sound: ", active_sound)
+	gun_sound.stream = active_sound
+	gun_sound.play()
 	fire_timer = fire_rate
 	ammo -= 1
 	update_ui()
@@ -71,6 +85,7 @@ func take_damage(amount):
 	update_ui()
 	print("Felix hp: ", hp)
 	if hp <= 0:
+		$LoseAudio.play()
 		get_tree().paused = true
 		game_over_screen.visible = true
 		print("Game Over")
@@ -82,7 +97,12 @@ func update_ui():
 	ammo_label.text = "Ammo: " + str(ammo)
 
 func set_weapon(weapon_name: String):
+	print("set_weapon called with: ", weapon_name)
 	if weapon_name == "Pistol":
+		pistol.visible = true
+		machinegun.visible = false
+		sniper.visible = false
+		active_sound = pistol_sound
 		damage = 2.5 + (GameData.damage_upgrade * .25)
 		fire_rate = .8 - (GameData.fire_rate_upgrade * 0.1)
 		is_auto = false
@@ -90,6 +110,10 @@ func set_weapon(weapon_name: String):
 		max_ammo = ammo
 		reload_time = 1.5 - (GameData.fire_rate_upgrade * 0.2)
 	elif weapon_name == "SMG":
+		pistol.visible = false
+		machinegun.visible = true
+		sniper.visible = false
+		active_sound = machinegun_sound
 		damage = 1.25 + (GameData.damage_upgrade * 0.2)
 		is_auto = true
 		fire_rate = .2 - (GameData.fire_rate_upgrade * 0.02)
@@ -97,6 +121,10 @@ func set_weapon(weapon_name: String):
 		max_ammo = ammo
 		reload_time = 1.88 - (GameData.fire_rate_upgrade * 0.1)
 	elif weapon_name == "Sniper":
+		pistol.visible = false
+		machinegun.visible = false
+		sniper.visible = true
+		active_sound = sniper_sound
 		damage = 5.0 + (GameData.damage_upgrade * 0.5)
 		fire_rate = 1.25 - (GameData.fire_rate_upgrade * 0.1)
 		is_auto = false

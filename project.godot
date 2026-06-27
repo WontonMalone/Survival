@@ -23,6 +23,19 @@ GameData="*uid://bys0aspiu27dd"
 
 window/size/viewport_width=640
 window/size/viewport_height=320
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[filesystem]
+
+import/fbx2gltf/enabled=false
+import/blender/enabled=false
+
+[gui]
+
+fonts/dynamic_fonts/use_oversampling=false
+theme/default_font_antialiasing=0
+theme/default_font_multichannel_signed_distance_field=true
 
 [physics]
 

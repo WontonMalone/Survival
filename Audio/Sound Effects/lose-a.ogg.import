@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b333f46wwotku"
+path="res://.godot/imported/lose-a.ogg-dc972808d9c7a678cfa587b72f88d2db.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/lose-a.ogg"
+dest_files=["res://.godot/imported/lose-a.ogg-dc972808d9c7a678cfa587b72f88d2db.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

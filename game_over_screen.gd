@@ -13,15 +13,18 @@ func update_gold_display():
 
 func _on_hp_upgrade_pressed():
 	if GameData.gold >= 10:
+		$ButtonSound.play()
 		GameData.gold -= 10
 		GameData.hp_upgrade += 1
 		upgrade_result_label.text = "HP increased by 5!"
 		update_gold_display()
 	else:
+		$ErrorSound.play()
 		upgrade_result_label.text = "Not enough gold!"
 
 func _on_damage_upgrade_pressed():
 	if GameData.gold >= 10:
+		$ButtonSound.play()
 		GameData.gold -=10
 		var roll = randi() % 3
 		if roll == 0:
@@ -35,10 +38,12 @@ func _on_damage_upgrade_pressed():
 			upgrade_result_label.text = "Ammo Upgraded!"
 		update_gold_display()
 	else:
+		$ErrorSound.play()
 		upgrade_result_label.text = "Not Enough Gold!"
 
 func _on_enemy_weakness_upgrade_pressed():
 	if GameData.gold >= 10:
+		$ButtonSound.play()
 		GameData.gold -= 10
 		var roll = randi() % 2
 		if roll == 0:
@@ -49,7 +54,9 @@ func _on_enemy_weakness_upgrade_pressed():
 			upgrade_result_label.text = "Enemies are weaker!"
 		update_gold_display()
 	else:
+		$ErrorSound.play()
 		upgrade_result_label.text = "Not Enough Gold!"
 func _on_button_pressed():
+	$ButtonSound.play()
 	get_tree().paused = false
 	get_tree().reload_current_scene()

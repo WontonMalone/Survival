@@ -5,9 +5,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aedft"]
 
-[node name="Goo" type="Area2D" unique_id=1996756807]
+[node name="Goo" type="Area2D" unique_id=1996756807 groups=["enemies"]]
 script = ExtResource("1_aedft")
-speed = 30
+speed = 25
 hp = 25
 gold_drop = 4
 

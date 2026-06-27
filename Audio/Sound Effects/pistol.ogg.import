@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://55fnh4aq21ic"
+path="res://.godot/imported/pistol.ogg-248a79c034a17d5ae0e6bea58dda03ae.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/pistol.ogg"
+dest_files=["res://.godot/imported/pistol.ogg-248a79c034a17d5ae0e6bea58dda03ae.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

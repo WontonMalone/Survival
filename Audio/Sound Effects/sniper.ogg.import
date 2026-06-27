@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c31yanqdc6v8m"
+path="res://.godot/imported/sniper.ogg-05ec4966027e2504507481198f561932.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/sniper.ogg"
+dest_files=["res://.godot/imported/sniper.ogg-05ec4966027e2504507481198f561932.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

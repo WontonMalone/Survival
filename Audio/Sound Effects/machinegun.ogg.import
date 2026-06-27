@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b58i5hdh1rl25"
+path="res://.godot/imported/machinegun.ogg-86558e22be625722fd4dc3076df6090b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/machinegun.ogg"
+dest_files=["res://.godot/imported/machinegun.ogg-86558e22be625722fd4dc3076df6090b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

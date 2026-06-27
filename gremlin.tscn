@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1y7l"]
 size = Vector2(20, 22)
 
-[node name="Gremlin" type="Area2D" unique_id=1205970874]
+[node name="Gremlin" type="Area2D" unique_id=1205970874 groups=["enemies"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_c1y7l")
 speed = 67

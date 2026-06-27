@@ -7,6 +7,7 @@ func _ready():
 
 func _on_start_button_pressed():
 	print("Game Started")
+	$ButtonSound.play()
 	visible = false
 	var weapon_wheel = get_node("../../UI/WeaponWheel")
 	weapon_wheel.visible = true
@@ -14,4 +15,5 @@ func _on_start_button_pressed():
 	
 	
 func _on_options_pressed():
+	$ButtonSound.play()
 	print("Options")
