@@ -14,9 +14,11 @@ hp = 100
 gold_drop = 8
 
 [node name="Gremlin2D" type="Sprite2D" parent="." unique_id=594154035]
+position = Vector2(0, -21.5)
 scale = Vector2(3, 3)
 texture = ExtResource("1_0gs2m")
 
 [node name="GremlinCol" type="CollisionShape2D" parent="." unique_id=1467274297]
+position = Vector2(0, -19.5)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_c1y7l")

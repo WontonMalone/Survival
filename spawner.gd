@@ -49,9 +49,9 @@ func spawn_enemy():
 		if not gremlin_spawned:
 			gremlin_spawned = true
 			var gremlin = gremlin_scene.instantiate()
-			gremlin.position = Vector2(655, 177)
+			gremlin.position = Vector2(655, 153)
 			get_parent().add_child(gremlin)
-	enemy.position = Vector2(675, 153)
+	enemy.position = Vector2(655, 177)
 	print(enemy.position, " | parent: ", get_parent().name)
 	print("spawn enemy")
 	get_parent().add_child(enemy)
