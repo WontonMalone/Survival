@@ -9,6 +9,7 @@ var spawn_timer = 0.0
 var spawn_interval = 2.0
 var can_spawn = false
 var game_timer = 0.0
+var gremlin_spawned = false
 
 func _process(delta):
 	if not can_spawn:
@@ -24,12 +25,33 @@ func spawn_enemy():
 	if game_timer < 30:
 		enemy = worm_scene.instantiate()
 	elif game_timer < 60:
-		enemy = fly_scene.instantiate()
+		var roll = randi() % 2
+		if roll == 0:
+			enemy = worm_scene.instantiate()
+		else:
+			enemy = fly_scene.instantiate()
 	elif game_timer < 120:
-		enemy = goo_scene.instantiate()
+		var roll = randi() % 3
+		if roll == 0:
+			enemy = worm_scene.instantiate()
+		elif roll == 1:
+			enemy = fly_scene.instantiate()
+		else:
+			enemy = goo_scene.instantiate()
 	else:
-		enemy = gremlin_scene.instantiate()
-	enemy.position = Vector2(655, 177)
+		var roll = randi() % 3
+		if roll == 0:
+			enemy = worm_scene.instantiate()
+		elif roll == 1:
+			enemy = fly_scene.instantiate()
+		else:
+			enemy = goo_scene.instantiate()
+		if not gremlin_spawned:
+			gremlin_spawned = true
+			var gremlin = gremlin_scene.instantiate()
+			gremlin.position = Vector2(655, 177)
+			get_parent().add_child(gremlin)
+	enemy.position = Vector2(675, 153)
 	print(enemy.position, " | parent: ", get_parent().name)
 	print("spawn enemy")
 	get_parent().add_child(enemy)

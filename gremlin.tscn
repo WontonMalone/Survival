@@ -4,18 +4,19 @@
 [ext_resource type="Script" uid="uid://d1f2qhtvvab6s" path="res://enemies.gd" id="1_c1y7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1y7l"]
-size = Vector2(20, 22)
+size = Vector2(20, 22.666668)
 
 [node name="Gremlin" type="Area2D" unique_id=1205970874 groups=["enemies"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_c1y7l")
 speed = 67
-hp = 50
+hp = 100
 gold_drop = 8
 
 [node name="Gremlin2D" type="Sprite2D" parent="." unique_id=594154035]
+scale = Vector2(3, 3)
 texture = ExtResource("1_0gs2m")
 
 [node name="GremlinCol" type="CollisionShape2D" parent="." unique_id=1467274297]
-position = Vector2(0, 1)
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_c1y7l")

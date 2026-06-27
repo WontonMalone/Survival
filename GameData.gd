@@ -7,3 +7,4 @@ var fire_rate_upgrade = 0
 var ammo_upgrade = 0
 var enemy_speed_upgrade = 0
 var enemy_hp_upgrade = 0
+var enemy_power = 0

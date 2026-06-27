@@ -33,6 +33,7 @@ var sniper_sound = preload("res://Audio/Sound Effects/sniper.ogg")
 
 func _ready():
 	hp = 10 + (GameData.hp_upgrade * 5)
+	hp = min(hp, 100)
 	update_ui()
 
 func _process(delta):
@@ -49,6 +50,13 @@ func _input(event):
 					shoot()
 				else:
 					is_holding = false
+	if event is InputEventKey:
+		if event.keycode == KEY_ESCAPE and event.pressed:
+			get_tree().paused = !get_tree().paused
+			get_node("../UI/PauseMenu").visible = get_tree().paused
+		if event.keycode == KEY_R and event.pressed:
+			get_tree().paused = false
+			get_tree().reload_current_scene()
 
 func shoot():
 	if is_reloading or ammo <= 0:
@@ -85,9 +93,11 @@ func take_damage(amount):
 	update_ui()
 	print("Felix hp: ", hp)
 	if hp <= 0:
-		$LoseAudio.play()
 		get_tree().paused = true
 		game_over_screen.visible = true
+		set_process(false)
+		set_physics_process(false)
+		set_process_input(false)
 		get_node("../crosshair").hide_crosshair()
 		print("Game Over")
 
@@ -97,6 +107,10 @@ func update_ui():
 	hp_label.text = "HP: " + str(roundi(hp))
 	ammo_label.text = "Ammo: " + str(ammo)
 
+func you_win():
+	get_tree().paused = true
+	get_node("../UI/YouWinScreen").visible = true
+
 func set_weapon(weapon_name: String):
 	print("set_weapon called with: ", weapon_name)
 	if weapon_name == "Pistol":
@@ -104,34 +118,34 @@ func set_weapon(weapon_name: String):
 		machinegun.visible = false
 		sniper.visible = false
 		active_sound = pistol_sound
-		damage = 2.5 + (GameData.damage_upgrade * .25)
-		fire_rate = .8 - (GameData.fire_rate_upgrade * 0.1)
+		damage = 2.5 + (GameData.damage_upgrade * .15)
+		fire_rate = .8 - (GameData.fire_rate_upgrade * 0.05)
 		is_auto = false
 		ammo = 8 + GameData.ammo_upgrade
 		max_ammo = ammo
-		reload_time = 1.5 - (GameData.fire_rate_upgrade * 0.2)
+		reload_time = 1.5 - (GameData.fire_rate_upgrade * 0.1)
 	elif weapon_name == "SMG":
 		pistol.visible = false
 		machinegun.visible = true
 		sniper.visible = false
 		active_sound = machinegun_sound
-		damage = 1.25 + (GameData.damage_upgrade * 0.2)
+		damage = 1 + (GameData.damage_upgrade * 0.1)
 		is_auto = true
-		fire_rate = .2 - (GameData.fire_rate_upgrade * 0.02)
-		ammo = 24 + (GameData.ammo_upgrade)
+		fire_rate = .2 - (GameData.fire_rate_upgrade * 0.01)
+		ammo = 24 + (GameData.ammo_upgrade * 2)
 		max_ammo = ammo
-		reload_time = 1.88 - (GameData.fire_rate_upgrade * 0.1)
+		reload_time = 2.2 - (GameData.fire_rate_upgrade * 0.05)
 	elif weapon_name == "Sniper":
 		pistol.visible = false
 		machinegun.visible = false
 		sniper.visible = true
 		active_sound = sniper_sound
-		damage = 5.0 + (GameData.damage_upgrade * 0.5)
-		fire_rate = 1.25 - (GameData.fire_rate_upgrade * 0.1)
+		damage = 5.0 + (GameData.damage_upgrade * 0.3)
+		fire_rate = 1.25 - (GameData.fire_rate_upgrade * 0.05)
 		is_auto = false
 		ammo = 4 + GameData.ammo_upgrade
 		max_ammo = ammo
-		reload_time = 2.0 - (GameData.fire_rate_upgrade * 0.2)
+		reload_time = 3.0 - (GameData.fire_rate_upgrade * 0.1)
 	fire_rate = max(fire_rate, 0.05)
 	reload_time = max(reload_time, 0.5)
 	update_ui()

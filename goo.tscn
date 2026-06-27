@@ -8,7 +8,7 @@
 [node name="Goo" type="Area2D" unique_id=1996756807 groups=["enemies"]]
 script = ExtResource("1_aedft")
 speed = 25
-hp = 25
+hp = 30
 gold_drop = 4
 
 [node name="Goo2D" type="Sprite2D" parent="." unique_id=256465344]

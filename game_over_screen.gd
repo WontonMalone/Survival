@@ -58,6 +58,7 @@ func _on_enemy_weakness_upgrade_pressed():
 		upgrade_result_label.text = "Not Enough Gold!"
 func _on_button_pressed():
 	$ButtonSound.play()
+	GameData.enemy_power = 0
 	get_node("../../crosshair").show_crosshair()
 	get_tree().paused = false
 	get_tree().reload_current_scene()

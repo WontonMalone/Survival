@@ -16,4 +16,6 @@ func _on_area_exited(area):
 
 func _process(delta):
 	if enemies_in_zone > 0:
-		get_parent().take_damage(2 * enemies_in_zone * delta)
+		var felix = get_parent().get_parent().get_node("Felix2D")
+		if felix.hp > 0:
+			felix.take_damage(2 * enemies_in_zone * delta)
